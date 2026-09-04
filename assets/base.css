@@ -1,0 +1,178 @@
+/* ============================================================
+   FIBA 3x3 Nations League — base.css
+   Reset, typography scale and the 45° cut treatment.
+   Generated from design-system/*.html — edit here, not there.
+   ============================================================ */
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+body {
+  background:var(--surface-page);
+  color:var(--text-primary);
+  font-family:'Barlow',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+b {
+  font-weight:700;
+}
+@property --c  { syntax: '<length>'; initial-value: 8px; inherits: true; }
+@property --n  { syntax: '<length>'; initial-value: 1px; inherits: true; }
+@property --ic { syntax: '<length>'; initial-value: 8px; inherits: true; }
+
+.cut {
+  clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c));
+}
+.cut-l {
+  --c:16px;
+}
+.cut-m {
+  --c:12px;
+}
+.cut-out > *:not(.cutfill) {
+  position:relative;
+}
+.cut-out {
+  --ic:calc(var(--c) - 0.586 * var(--n,1px));
+}
+.cut-s {
+  --c:8px;
+}
+.t-h2 {
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:32px;
+  line-height:36px;
+  letter-spacing:-0.2px;
+  text-transform:uppercase;
+  color:var(--text-primary);
+}
+.t-h3 {
+  font-family:'Barlow',sans-serif;
+  font-weight:700;
+  font-size:20px;
+  line-height:26px;
+  color:var(--text-primary);
+}
+.t-body-m {
+  font-family:'Barlow',sans-serif;
+  font-weight:400;
+  font-size:16px;
+  line-height:24px;
+  color:var(--text-secondary);
+}
+.t-body-s {
+  font-family:'Barlow',sans-serif;
+  font-weight:400;
+  font-size:14px;
+  line-height:20px;
+  color:var(--text-secondary);
+}
+.t-body-l {
+  font-family:'Barlow',sans-serif;
+  font-weight:400;
+  font-size:18px;
+  line-height:28px;
+  color:var(--text-secondary);
+}
+.t-label {
+  font-family:'Barlow',sans-serif;
+  font-weight:600;
+  font-size:14px;
+  line-height:18px;
+  color:var(--text-primary);
+}
+.t-caption {
+  font-family:'Barlow',sans-serif;
+  font-weight:600;
+  font-size:12px;
+  line-height:16px;
+  letter-spacing:0.6px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.t-data-m {
+  font-family:'Barlow',sans-serif;
+  font-weight:600;
+  font-size:16px;
+  line-height:20px;
+  font-variant-numeric:tabular-nums;
+  color:var(--text-primary);
+}
+.focus-ring {
+  outline:2px solid var(--action-default);
+  outline-offset:2px;
+}
+.lbl {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+  text-transform:inherit;
+}
+.lbl {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  color:inherit;
+  font:inherit;
+  letter-spacing:inherit;
+  text-transform:inherit;
+}
+.cutfill {
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  background:var(--of,var(--surface-page));
+  clip-path:polygon(var(--ic) 0,100% 0,100% calc(100% - var(--ic)),calc(100% - var(--ic)) 100%,0 100%,0 var(--ic));
+}
+.cut-in {
+  clip-path:polygon(var(--ic) 0,100% 0,100% calc(100% - var(--ic)),calc(100% - var(--ic)) 100%,0 100%,0 var(--ic));
+}
+
+/* Belt and braces: if @property is unavailable the fill still has to be a
+   cut shape, so give it the outer radius rather than an invalid length. */
+@supports not (background: paint(x)) {
+  .cut-out { --ic: var(--c); }
+}
+
+
+/* A cut control that cannot hold a .cutfill child -----------------
+   clip-path removes the corner from the border along with the rest
+   of the box, so a 1px outline drawn with `border` shows nothing on
+   the two 45 degree edges. Everywhere the mark-up allows it the
+   system solves this with el-00 CutSurface: the outline is the
+   element's own background and a .cutfill layer covers all of it
+   except the ring. A <button> built by script has no room for that
+   child, so the same construction is offered as one class with the
+   fill on ::before.
+
+   --cutic is the inner cut: --cutc minus 0.586 x the border, the
+   figure .cut-out derives for every cut-out in the system.       */
+.cutbtn {
+  position:relative;
+  border:1px solid transparent;
+  background:var(--cutline,var(--border-default));
+  --cutc:8px;
+  --cutic:7.414px;
+  clip-path:polygon(var(--cutc) 0,100% 0,100% calc(100% - var(--cutc)),calc(100% - var(--cutc)) 100%,0 100%,0 var(--cutc));
+}
+.cutbtn::before {
+  content:'';
+  position:absolute;
+  left:0;
+  top:0;
+  right:0;
+  bottom:0;
+  background:var(--cutfillc,var(--surface-page));
+  clip-path:polygon(var(--cutic) 0,100% 0,100% calc(100% - var(--cutic)),calc(100% - var(--cutic)) 100%,0 100%,0 var(--cutic));
+}
+.cutbtn > * {
+  position:relative;
+}

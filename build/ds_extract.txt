@@ -1,0 +1,261 @@
+
+
+===== ctl-01-button  (pages/elements.html)
+PURPOSE: el-purpose">Primary is a solid black surface — there is no coloured brand button in this system. All three variants share one geometry so they swap by property alone. Focus is a 2px black ring offset 2px outside the shape.
+defaultFull standings<d
+MARKUP:
+<div class="ctl-01-Button--primary-default btn cut cut-m btn-primary"><span class="lbl">Full standings</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="ctl-01-Button--primary-hover btn cut cut-m btn-primary-hover"><span class="lbl">Full standings</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="ctl-01-Button--primary-focus btn cut cut-m btn-primary-focus cut-out"><div class="cutfill"></div><span class="lbl">Full standings</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">disabled</div><div class="ctl-01-Button--primary-disabled btn cut cut-m btn-primary-disabled"><span class="lbl">Full standings</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div><div class="el-states"><div class="el-state"><div class="t-caption el-state-label">default</div><div class="ctl-01-Button--outline-default btn cut cut-m btn-outline cut-out"><div class="cutfill"></div><span class="lbl">View conference</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><pat
+
+
+===== ctl-02-link  (pages/elements.html)
+PURPOSE: el-purpose">Uppercase and black, with no underline at rest — the arrow carries the affordance. The rule only appears on hover and focus, so a page full of links stays quiet.
+defaultAll videoshoverAll videos<svg fill="currentColor" height="1
+MARKUP:
+<div class="ctl-02-Link--default lnk">All videos<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="ctl-02-Link--hover lnk lnk-hover">All videos<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="ctl-02-Link--focus lnk lnk-focus">All videos<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">disabled</div><div class="ctl-02-Link--disabled lnk lnk-disabled">All videos<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div><div class="live-demo"><div class="t-caption live-demo-label">Live demo — hover, click and tab through this one</div><div class="live live-stage"><div class="ctl-02-Link--default lnk">All videos<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div></section></section>
+<section class="anchor" id="ctl-03-tab" data-anchor="ctl-03-tab"><section class="el-block">
+<div class="el-head"><div class="ds-name">ctl-03 Tab</div><div class="t-body-s el-purpose">The sel
+
+
+===== ctl-04-input-select  (pages/elements.html)
+PURPOSE: el-purpose">Focus is a 2px ring outside the field rather than a thicker border, so the field never shifts by a pixel when focused.
+defaultSelect conferencehover<div class="ctl-04-Field--hover fld cut cut-s fld-hover cut-ou
+MARKUP:
+<div class="ctl-04-Field--default fld cut cut-s cut-out"><div class="cutfill"></div><div style="flex:1 1 0">Select conference</div><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="ctl-04-Field--hover fld cut cut-s fld-hover cut-out"><div class="cutfill"></div><div style="flex:1 1 0">Select conference</div><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="ctl-04-Field--focus fld cut cut-s fld-focus-ring cut-out"><div class="cutfill"></div><div style="flex:1 1 0">Select conference</div><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">disabled</div><div class="ctl-04-Field--disabled fld cut cut-s fld-disabled cut-out"><div class="cutfill"></div><div style="flex:1 1 0">Select conference</div><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">filled</div><div class="ctl-04-Field--filled fld cut cut-s fld-filled cut-out"><div class="cutfill"></div><div style="flex:1 1 0">Europe 1 U23</div><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240
+
+
+===== ctl-07-watchlive  (pages/elements.html)
+PURPOSE: el-purpose">The link out to the YouTube stream. There is no video module in this system — the league streams on YouTube and the site sends people there, so the only thing to design is the button that does it well.
+variant = live — a stream is running nowdefault
+<path d="M26.5407 10.4706C26.4132 9.99513 26.17
+MARKUP:
+<div class="ctl-07-WatchLive-live--default ctl-07-WatchLive--live-default wl cut cut-m wl-live"><div class="wl-yt"><svg fill="currentColor" height="22" viewBox="0 0 32 32" width="22" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.5407 10.4706C26.4132 9.99513 26.17 9.56196 25.8346 9.21292C25.4991 8.86388 25.0829 8.61079 24.626 8.4781C22.9112 8.00001 16.0098 8.00001 16.0098 8.00001C16.0098 8.00001 9.12581 7.99047 7.39359 8.4781C6.9367 8.61079 6.52043 8.86388 6.18502 9.21292C5.8496 9.56196 5.60639 9.99513 5.47888 10.4706C5.15382 12.2975 4.99356 14.1521 5.0002 16.01C4.99481 17.861 5.15507 19.7084 5.47888 21.5285C5.60639 22.0039 5.8496 22.4371 6.18502 22.7861C6.52043 23.1352 6.9367 23.3883 7.39359 23.521C9.10656 24 16.0098 24 16.0098 24C16.0098 24 22.8928 24 24.626 23.521C25.0829 23.3883 25.4991 23.1352 25.8346 22.7861C26.17 22.4371 26.4132 22.0039 26.5407 21.5285C26.8577 19.7078 27.0112 17.8603 26.9992 16.01C27.0125 14.1527 26.859 12.2982 26.5407 10.4706ZM13.8071 19.4368V12.5728L19.5513 16.01L13.8071 19.4368Z" fill="currentColor"></path>
+</svg></div><span class="lbl">Watch live</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M180-120q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h279v60H180v600h600v-279h60v279q0 24-18 42t-42 18H180Zm202-219-42-43 398-398H519v-60h321v321h-60v-218L382-339Z"></path></svg></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="ctl-07-WatchLive-live--hover ctl-07-WatchLive--live-hover wl cut cut-m wl-live wl-hover"><div class="wl-yt"><svg fill="currentColor" height="22" viewBox="0 0 32 32" width="22" xmlns="http://www.w3.org/2000/svg">
+<path d="M26.5407 10.4706C26.4132 9.99513 26.17 9.56196 25.8346 9.21292C25.4991 8.86388 25.0829 8.61079 24.626 8.4781C22.9112 8.00001 16.0098 8.00001 16.0098 8.00001C16.0098 8.00001 9.12581 7.99047 7.393
+
+
+===== el-01-sectionheader  (pages/elements.html)
+PURPOSE: el-purpose">Title plus an optional action link. No mark, no rule — secondary branding is carried by the wording itself ("Nations League + section") rather than by a graphic device, so the header adds nothing to the page except type.
+defaultNations League QualificationAll conferences<path d="M686-450H
+MARKUP:
+<div style="display:flex;flex-direction:column;gap:4px;width:1400px"><div class="el-01-SectionHeader--default el01"><div class="el01-left"><div class="t-h2">Nations League Qualification</div></div><div class="lnk">All conferences<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">hover on link</div><div style="display:flex;flex-direction:column;gap:4px;width:1400px"><div class="el-01-SectionHeader--hover-on-link el01"><div class="el01-left"><div class="t-h2">Nations League Qualification</div></div><div class="lnk lnk-hover">All conferences<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">focus on link</div><div style="display:flex;flex-direction:column;gap:4px;width:1400px"><div class="el-01-SectionHeader--focus-on-link el01"><div class="el01-left"><div class="t-h2">Nations League Qualification</div></div><div class="lnk lnk-focus">All conferences<svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">disabled link</div><div style="display:flex;flex-direction:column;gap:4px;width:1400px"><div class="el-01-SectionHeader--disabled-link el01"><div class="el01-left"><div class="t-h2">Nations League Qualification</div></div><div class="lnk lnk-disabled">All conferences<svg fill="currentColor" height="
+
+
+===== el-05-statusbadge  (pages/elements.html)
+PURPOSE: el-purpose">Six states, one geometry. Red is reserved for LIVE and appears nowhere else in the system. Not interactive, so it has no hover or focus.
+liveLivequalifiedQualifiedshortlistedShortlisted<div
+MARKUP:
+<div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span>Live</div></div><div class="el-state"><div class="t-caption el-state-label">qualified</div><div class="el-05-StatusBadge--qualified badge badge-q cut cut-s">Qualified</div></div><div class="el-state"><div class="t-caption el-state-label">shortlisted</div><div class="el-05-StatusBadge--shortlisted badge badge-s cut cut-s">Shortlisted</div></div><div class="el-state"><div class="t-caption el-state-label">upcoming</div><div class="el-05-StatusBadge--upcoming badge badge-up cut cut-s">Upcoming</div></div><div class="el-state"><div class="t-caption el-state-label">not qualified</div><div class="el-05-StatusBadge--not-qualified badge badge-nq cut cut-s">Not qualified</div></div><div class="el-state"><div class="t-caption el-state-label">marker Q</div><div class="el-05-StatusBadge--marker-q marker marker-q cut cut-s">Q</div></div><div class="el-state"><div class="t-caption el-state-label">marker S</div><div class="el-05-StatusBadge--marker-s marker marker-s cut cut-s">S</div></div><div class="el-state"><div class="t-caption el-state-label">marker R — in the race</div><div class="el-05-StatusBadge--marker-r el-05-StatusBadge--marker-r marker marker-r cut cut-s"><span class="lbl">R</span></div></div><div class="el-state"><div class="t-caption el-state-label">marker N — not qualified</div><div class="el-05-StatusBadge--marker-n marker marker-n cut cut-s"><span class="lbl">N</span></div></div></div><div class="el-note cut cut-s"><div class="t-label">Note</div><div class="t-body-s">There is deliberately no "Completed" badge. If it is live, show it; otherwise show nothing. <b>Not qualified</b> is the quietest state in the set — the lightest grey surface with --status-neutral text, close to disabled, so an eliminated team reads as settled rather than flagged. <b>Marker N</b> is the same s
+
+
+===== el-08-tableheaderrow  (pages/elements.html)
+PURPOSE: el-purpose">The header half of the table pair. Every cell width here must equal the matching cell width in el-04 TeamRow — that single rule is what keeps the table aligned, and it is what the Figma Agent prompt enforces.
+default — sorted by Tour Points, descendingPosFederation</s
+MARKUP:
+<div class="el-08-TableHeaderRow cut cut-s thead"><div class="cell-position cell c-pos cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">Pos</span></div><div class="cell-federation cell c-fed cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">Federation</span></div><div class="cell-conference cell c-conf cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">Conference</span><svg fill="currentColor" height="16" viewBox="0 -960 960 960" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M480-120 300-300l44-44 136 136 136-136 44 44-180 180ZM344-612l-44-44 180-180 180 180-44 44-136-136-136 136Z"></path></svg></div><div class="cell-winratio cell c-wr cell-num cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">Win Ratio</span><svg fill="currentColor" height="16" viewBox="0 -960 960 960" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M480-120 300-300l44-44 136 136 136-136 44 44-180 180ZM344-612l-44-44 180-180 180 180-44 44-136-136-136 136Z"></path></svg></div><div class="cell-ptsavg cell c-pa cell-num cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">Pts Average</span><svg fill="currentColor" height="16" viewBox="0 -960 960 960" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M480-120 300-300l44-44 136 136 136-136 44 44-180 180ZM344-612l-44-44 180-180 180 180-44 44-136-136-136 136Z"></path></svg></div><div class="cell-ep cell c-ep cell-num cell-sortable" role="button" tabindex="0"><span class="t-caption" style="color:inherit">EP</span><svg fill="currentColor" height="16" viewBox="0 -960 960 960" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M480-120 300-300l44-44 136 136 136-136 44 44-180 180ZM344-612l-44-44 180-180 180 180-44 44-136-136-136 136Z"></path></svg></div>
+
+
+===== el-04-teamrow  (pages/elements.html)
+PURPOSE: el-purpose">One row of any standings table. Rows sit directly on the page — there is no card around the table. In Figma this becomes a component with one boolean property per column, so a column change is a switch rather than a rebuild.
+default
+4
+
+<g cl
+MARKUP:
+<div class="el-04-TeamRow trow">
+<div class="cell-position cell c-pos"><span class="t-data-m">4</span></div>
+<div class="cell-federation cell c-fed"><div class="el-13-FederationTag--plain ftag ftag-m cut cut-s ftag-plain"><div class="flag flag-ring"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_732_93528_u23)">
+<path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"></path>
+<path d="M12.0007 -0.000488281C6.45634 -0.000488281 1.79106 3.75987 0.414062 8.86906H23.5873C22.2103 3.75987 17.545 -0.000488281 12.0007 -0.000488281Z" fill="#A2001D"></path>
+<path d="M12.0007 23.999C17.545 23.999 22.2103 20.2386 23.5873 15.1294H0.414062C1.79106 20.2385 6.45634 23.999 12.0007 23.999Z" fill="#A2001D"></path>
+</g>
+<defs>
+<clipPath id="clip0_732_93528_u23">
+<rect fill="white" height="24" width="24"></rect>
+</clipPath>
+</defs>
+</svg></div><div class="ftag-txt"><span class="ftag-code">LAT</span><span class="ftag-name">Latvia</span></div></div></div>
+<div class="cell-conference cell c-conf"><span class="t-body-s">Europe 1 U23</span></div>
+<div class="cell-winratio cell c-wr cell-num"><span class="t-data-m">0.75</span></div>
+<div class="cell-ptsavg cell c-pa cell-num"><span class="t-data-m">19.4</span></div>
+<div class="cell-ep cell c-ep cell-num"><span class="t-data-m">4</span></div>
+<div class="cell-points cell c-pts cell-num"><span class="t-data-m">1 240</span></div>
+<div class="cell-status cell c-st"><div class="el-05-StatusBadge--marker-r marker marker-r cut cut-s"><span class="lbl">R</span></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="el-04-TeamRow trow trow-hover">
+<div class="cell-position cell c-pos"><span class="t-data-m">4</span></div>
+<div class="cell-federation c
+
+
+===== el-07-accordionshell  (pages/elements.html)
+PURPOSE: el-purpose">The World Tour drill-down pattern: start at 20,000 feet, expand in place, never leave the page. The expanded body has no fill of its own, so the table sits one level deep, not two.
+default — collapsed
+Live
+Africa East U23Kigali · Stop 5 of 6
+<div class="d
+MARKUP:
+<div class="el-07-AccordionShell--default acc cut cut-m cut-out"><div class="cutfill"></div><div class="acc-head cut-tb">
+<div class="acc-left"><div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span>Live</div>
+<span class="t-h3">Africa East U23</span><span class="t-body-s">Kigali · Stop 5 of 6</span></div>
+<div class="acc-left"><div class="dots-wrap"><div class="dots"><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-live"></div><div class="dot"></div></div><span class="t-caption">Stop 5 of 6</span></div><svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="el-07-AccordionShell--hover acc cut cut-m cut-out"><div class="cutfill"></div><div class="acc-head cut-tb acc-head-hover">
+<div class="acc-left"><div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span>Live</div>
+<span class="t-h3">Africa East U23</span><span class="t-body-s">Kigali · Stop 5 of 6</span></div>
+<div class="acc-left"><div class="dots-wrap"><div class="dots"><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-done"></div><div class="dot dot-live"></div><div class="dot"></div></div><span class="t-caption">Stop 5 of 6</span></div><svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M480-344 240-584l43-43 197 197 197-197 43 43-240 240Z"></path></svg></div></div></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="el-07-AccordionShel
+
+
+===== el-11-searchinput  (pages/elements.html)
+PURPOSE: el-purpose">The gateway built on the assumption that fans look for their own federation and little else. Accepts a name or an IOC code. The suggestion list is a separate component (el-15) so any field can reuse it.
+default<path d="M796-121 533-384q-30 26-70 40.5T378-329q-108 0-183-75t-75-181q0-106 75-181t182-75q106 0 180.5 75T632-585q0 43-14 83t-42 75l264 262-44 44ZM377-389q81 0 138-57.5T572-
+MARKUP:
+<div class="el-11-SearchInput--default search cut cut-m cut-out"><div class="cutfill"></div><svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M796-121 533-384q-30 26-70 40.5T378-329q-108 0-183-75t-75-181q0-106 75-181t182-75q106 0 180.5 75T632-585q0 43-14 83t-42 75l264 262-44 44ZM377-389q81 0 138-57.5T572-585q0-81-57-138.5T377-781q-82 0-139.5 57.5T180-585q0 81 57.5 138.5T377-389Z"></path></svg><div class="search-txt">Search for a federation or IOC code</div></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="el-11-SearchInput--hover search cut cut-m search-hover cut-out"><div class="cutfill"></div><svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M796-121 533-384q-30 26-70 40.5T378-329q-108 0-183-75t-75-181q0-106 75-181t182-75q106 0 180.5 75T632-585q0 43-14 83t-42 75l264 262-44 44ZM377-389q81 0 138-57.5T572-585q0-81-57-138.5T377-781q-82 0-139.5 57.5T180-585q0 81 57.5 138.5T377-389Z"></path></svg><div class="search-txt">Search for a federation or IOC code</div></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="el-11-SearchInput--focus search cut cut-m search-focus cut-out"><div class="cutfill"></div><svg fill="currentColor" height="24" viewBox="0 -960 960 960" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M796-121 533-384q-30 26-70 40.5T378-329q-108 0-183-75t-75-181q0-106 75-181t182-75q106 0 180.5 75T632-585q0 43-14 83t-42 75l264 262-44 44ZM377-389q81 0 138-57.5T572-585q0-81-57-138.5T377-781q-82 0-139.5 57.5T180-585q0 81 57.5 138.5T377-389Z"></path></svg><div class="search-txt">Search for a federation or IOC code</div></div></div><div class="el-state"><div class="t-caption el-state-label">disabled</div><div class="el-11-SearchInput--disabled se
+
+
+===== el-14-chip  (pages/elements.html)
+PURPOSE: el-purpose">The text-only sibling of el-13. One component covers the region filter bar, the applied-filter tokens and any inline tag, so there is only ever one chip geometry in the system.
+sizes — L 48 · M 40 · S 32AsiaPacificAsiaPacific<div class="el-14-Chip--s-default chip
+MARKUP:
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div class="el-14-Chip--l-default chip chip-l cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">AsiaPacific</span></div><div class="el-14-Chip--m-default chip chip-m cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">AsiaPacific</span></div><div class="el-14-Chip--s-default chip chip-s cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">AsiaPacific</span></div></div></div><div class="el-state"><div class="t-caption el-state-label">states — default · hover · focus · selected · disabled</div><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div class="el-14-Chip--m-default chip chip-m cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">Europe</span></div><div class="el-14-Chip--m-hover chip chip-m cut cut-s chip-hover cut-out"><div class="cutfill"></div><span class="lbl">Europe</span></div><div class="el-14-Chip--m-focus chip chip-m cut cut-s chip-focus cut-out"><div class="cutfill"></div><span class="lbl">Europe</span></div><div class="el-14-Chip--m-on chip chip-m cut cut-s chip-on cut-out"><div class="cutfill"></div><span class="lbl">Europe</span></div><div class="el-14-Chip--m-dis chip chip-m cut cut-s chip-dis cut-out"><div class="cutfill"></div><span class="lbl">Europe</span></div></div></div><div class="el-state"><div class="t-caption el-state-label">dismissible — L / M / S</div><div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div class="el-14-Chip--l-default-dismissible chip chip-l cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">Men U23</span><div class="chip-x"><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="m330-288 150-150 150 150 42-42-150-150 150-150-42-42-150 150-150-150-42 42 150 150-150 150 42 42ZM480-
+
+
+===== el-13-federationtag  (pages/elements.html)
+PURPOSE: el-purpose">The flag and the federation name are one element, not two cells that happen to sit next to each other. Everywhere a federation appears — table row, autocomplete, filter token, team header — it is this component, so the flag ring, the gap and the type ramp can never drift apart.
+content — code / name / code + name
+<g clip-path="url(#
+MARKUP:
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center"><div class="el-13-FederationTag--m-code ftag ftag-m cut cut-s"><div class="flag"><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_732_94078_u1)">
+<path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white"></path>
+<path d="M16.1759 11.9996C16.1759 13.0431 14.3072 15.6517 12.002 15.6517C9.69684 15.6517 7.82812 13.0431 7.82812 11.9996C7.82812 9.69436 9.69684 7.82568 12.002 7.82568C14.3072 7.82568 16.1759 9.69436 16.1759 11.9996Z" fill="#D80027"></path>
+<path d="M16.1759 11.9995C16.1759 14.3047 14.3072 16.1734 12.002 16.1734C9.69684 16.1734 7.82812 14.3047 7.82812 11.9995" fill="#0052B4"></path>
+<path d="M17.5364 14.5827L16.4297 15.6895L17.1675 16.4273L18.2743 15.3205L17.5364 14.5827Z" fill="black"></path>
+<path d="M15.6849 16.4269L14.5781 17.5337L15.316 18.2715L16.4227 17.1648L15.6849 16.4269Z" fill="black"></path>
+<path d="M19.7474 16.7946L18.6406 17.9014L19.3785 18.6392L20.4852 17.5325L19.7474 16.7946Z" fill="black"></path>
+<path d="M17.9036 18.6408L16.7969 19.7476L17.5347 20.4854L18.6415 19.3787L17.9036 18.6408Z" fill="black"></path>
+<path d="M18.638 15.6896L17.5312 16.7964L18.2691 17.5342L19.3759 16.4275L18.638 15.6896Z" fill="black"></path>
+<path d="M16.7943 17.5339L15.6875 18.6406L16.4253 19.3785L17.5321 18.2717L16.7943 17.5339Z" fill="black"></path>
+<path d="M15.6893 5.35821L18.6406 8.30957L19.3785 7.57172L16.4271 4.62037L15.6893 5.35821Z" fill="black"></path>
+<path d="M14.5807 6.466L15.6875 7.57275L16.4253 6.83494L15.3186 5.72818L14.5807 6.466Z" fill="black"></path>
+<path d="M16.4245 8.31024L17.5312 9.41699L18.2691 8.67918L17.1623 7.57243L16.4245 8.31024Z" fill="black"></path>
+<path d="M16.7917 4.25213L17.8984 5.35889L18.6363 4.62104L17.5295 3.
+
+
+===== el-16-card  (pages/elements.html)
+PURPOSE: el-purpose">The generic content container. News, photos, conferences and team entries are all this component with a different body — one geometry, one set of states, one shadow scale.
+defaultImageStop resultKenya take
+MARKUP:
+<div class="el-16-Card--default card cut cut-m cut-out"><div class="cutfill"></div><div class="card-media cut-top"><span class="t-caption">Image</span></div><div class="card-body"><div style="display:flex"><div class="el-14-Chip--s-default chip chip-s cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">Stop result</span></div></div><div class="card-title">Kenya take Kigali and move top of Africa East</div></div><div class="card-foot cut-bot"><span class="t-caption">18 Aug · Africa East U23</span><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div><div class="el-state"><div class="t-caption el-state-label">hover</div><div class="el-16-Card--hover card cut cut-m card-hover cut-out"><div class="cutfill"></div><div class="card-media cut-top"><span class="t-caption">Image</span></div><div class="card-body"><div style="display:flex"><div class="el-14-Chip--s-default chip chip-s cut cut-s cut-out"><div class="cutfill"></div><span class="lbl">Stop result</span></div></div><div class="card-title">Kenya take Kigali and move top of Africa East</div></div><div class="card-foot cut-bot"><span class="t-caption">18 Aug · Africa East U23</span><svg fill="currentColor" height="20" viewBox="0 -960 960 960" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></div></div><div class="el-state"><div class="t-caption el-state-label">focus</div><div class="el-16-Card--focus card cut cut-m card-focus cut-out"><div class="cutfill"></div><div class="card-media cut-top"><span class="t-caption">Image</span></div><div class="card-body"><div style="display:flex"><div class="el-14-Chip--s-default chip chip-s cut cut-s cut-out"><div class="c
+
+
+===== el-23-breadcrumb  (pages/elements.html)
+PURPOSE: el-purpose">The path back up. It was living inside F-04 SubHeader; pulling it out means search results, articles and stop pages can all use the same one.
+two levelsHomeStandings<div class="t-caption el-stat
+MARKUP:
+<div class="el-23-Breadcrumb--two-levels el-23-Breadcrumb--default crumbs"><span class="crumb">Home</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"></path></svg></span><span class="crumb crumb-cur">Standings</span></div></div><div class="el-state"><div class="t-caption el-state-label">three levels</div><div class="el-23-Breadcrumb--three-levels el-23-Breadcrumb--default crumbs"><span class="crumb">Home</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"></path></svg></span><span class="crumb">Conferences</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"></path></svg></span><span class="crumb crumb-cur">Africa East U23</span></div></div><div class="el-state"><div class="t-caption el-state-label">four levels</div><div class="el-23-Breadcrumb--four-levels el-23-Breadcrumb--default crumbs"><span class="crumb">Home</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"></path></svg></span><span class="crumb">Conferences</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="http://www.w3.org/2000/svg"><path d="M530-481 332-679l43-43 241 241-241 241-43-43 198-198Z"></path></svg></span><span class="crumb">Africa East U23</span><span class="crumb-sep"><svg fill="currentColor" height="14" viewBox="0 -960 960 960" width="14" xmlns="
+
+
+===== el-29-adspace  (pages/elements.html)
+PURPOSE: el-purpose">A reserved advertising slot. It sits mid-page or above the footer, never in the header, and it is drawn as an explicit placeholder so a page never looks broken while a slot is unsold.
+site · 1440 x 160 — full content width, house formatAdvertising1440 x 160billboard · 970 x 250<div class="el-29-AdSpace--billboard el-29-AdSpace--billboard
+MARKUP:
+<div class="el-29-AdSpace--site el-29-AdSpace--full ad ad-full cut cut-m cut-out"><div class="cutfill"></div><span class="ad-lbl">Advertising</span><span class="ad-dim">1440 x 160</span></div></div><div class="el-state"><div class="t-caption el-state-label">billboard · 970 x 250</div><div class="el-29-AdSpace--billboard el-29-AdSpace--billboard ad ad-billboard cut cut-m cut-out"><div class="cutfill"></div><span class="ad-lbl">Advertising</span><span class="ad-dim">970 x 250</span></div></div><div class="el-state"><div class="t-caption el-state-label">leaderboard · 728 x 90</div><div class="el-29-AdSpace--leaderboard el-29-AdSpace--leaderboard ad ad-leaderboard cut cut-m cut-out"><div class="cutfill"></div><span class="ad-lbl">Advertising</span><span class="ad-dim">728 x 90</span></div></div><div class="el-state"><div class="t-caption el-state-label">half page · 300 x 600</div><div class="el-29-AdSpace--half-page el-29-AdSpace--halfpage ad ad-halfpage cut cut-m cut-out"><div class="cutfill"></div><span class="ad-lbl">Advertising</span><span class="ad-dim">300 x 600</span></div></div><div class="el-state"><div class="t-caption el-state-label">MPU · 300 x 250</div><div class="el-29-AdSpace--mpu el-29-AdSpace--mpu ad ad-mpu cut cut-m cut-out"><div class="cutfill"></div><span class="ad-lbl">Advertising</span><span class="ad-dim">300 x 250</span></div></div><div class="el-state"><div class="t-caption el-state-label">unsold — the slot collapses rather than showing an empty box</div><div class="el-29-AdSpace--unsold empty cut cut-m cut-out"><div class="cutfill"></div><div class="empty-icon"><svg fill="currentColor" height="32" viewBox="0 -960 960 960" width="32" xmlns="http://www.w3.org/2000/svg"><path d="M453-280h60v-240h-60v240Zm50.5-323.2q9.5-9.2 9.5-22.8 0-14.45-9.48-24.22-9.48-9.78-23.5-9.78t-23.52 9.78Q447-640.45 447-626q0 13.6 9.48 22.8 9.48 9.2 23.5 9.2t23.52-9.2ZM480
+
+
+===== el-22-carouselindicator  (pages/elements.html)
+PURPOSE: el-purpose">Position and progress for any carousel. Bars are the default because they double as a progress track; round dots are the compact variant for tight placements.
+bar — position onlybar — auto-advance, current slide filling<div class="el-22-CarouselI
+MARKUP:
+<div class="el-22-CarouselIndicator--bar el-22-CarouselIndicator--bar ind"><div class="ind-d cut cut-s"></div><div class="ind-d ind-d-on cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div></div></div><div class="el-state"><div class="t-caption el-state-label">bar — auto-advance, current slide filling</div><div class="el-22-CarouselIndicator--bar el-22-CarouselIndicator--prog ind"><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-prog cut cut-s"><div class="ind-fill" style="width:14px"></div></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div></div></div><div class="el-state"><div class="t-caption el-state-label">bar — first slide</div><div class="el-22-CarouselIndicator--bar el-22-CarouselIndicator--bar ind"><div class="ind-d ind-d-on cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div><div class="ind-d cut cut-s"></div></div></div><div class="el-state"><div class="t-caption el-state-label">dot — compact variant</div><div class="el-22-CarouselIndicator--dot el-22-CarouselIndicator--dot ind"><div class="ind-dot"></div><div class="ind-dot"></div><div class="ind-dot ind-dot-on"></div><div class="ind-dot"></div><div class="ind-dot"></div></div></div></div><div class="el-note cut cut-s"><div class="t-label">Note</div><div class="t-body-s">Spacing between marks is 4px, half of what a chip row uses, so the set reads as one control rather than a row of separate objects. The bar is 36 x 8 — the one place the corner cut is not cut-s: a full 8px cut is the whole height of the bar and would leave a parallelogram, so it is halved to <b>4px</b> and reads as the notch it is everywhere else.<br><br><b>One bar fills at a time.</b> The bar for the slide on screen runs from empty to full o
+
+
+===== s-09-overview  (pages/modules-1.html)
+PURPOSE: el-purpose">Where the season stands, as the first block of a page. Two types: conferences alone, which is what the landing page carries, and conferences and stops worldwide, which belongs on the Conferences page. A third line, Teams, states the size of the field — 202 team sites — 68 nations — and is carried by both types. Each line is written as total then breakdown — 18 Conferences — 0 finished — 18 to go — 1 live 
+MARKUP:
+<div class="S-13-Countdown--default s13 cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>Season 2027</span></div><div class="s13-t">Nations League returns</div><div class="s13-sub">Conference 1 opens in Manila &middot; 12 June 2027</div></div><div class="s13-units"><div class="s13-u cut cut-s"><span class="s13-v">288</span><span class="s13-k">Days</span></div><div class="s13-u cut cut-s"><span class="s13-v">14</span><span class="s13-k">Hours</span></div><div class="s13-u cut cut-s"><span class="s13-v">06</span><span class="s13-k">Minutes</span></div><div class="s13-u cut cut-s"><span class="s13-v">52</span><span class="s13-k">Seconds</span></div></div><div class="s13-live"><div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span><span class="lbl">Live</span></div><span class="t-body-m">Conference 1 is being played now</span></div><div class="s13-foot"><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">Full season calendar</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">How qualification works</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a></div></div></div>
+<div class="el-state"><div class="t-caption el-state-label">variant = brand — on the NL gradient, for a hero band</div><div class="S-13-Countdown--brand s13 s13-brand cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>FIBA 3x3 World Tour 2026</span></div><div class="s13-t">Next stop &middot; Debrecen</div><div clas
+
+
+===== s-01-liveconferenceaccordion  (pages/modules-1.html)
+PURPOSE: el-purpose">The landing page answer to "what is happening right now", and to "what happened on the day I just picked". Only live conferences appear by default (LP-14), there is no game list (LP-15), and each row expands in place to the stop number plus the conference standings (LP-16). The gender switch that used to sit inside each expanded panel has moved out to the filter bar above the strip: one control for the wh
+MARKUP:
+<div class="S-13-Countdown--default s13 cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>Season 2027</span></div><div class="s13-t">Nations League returns</div><div class="s13-sub">Conference 1 opens in Manila &middot; 12 June 2027</div></div><div class="s13-units"><div class="s13-u cut cut-s"><span class="s13-v">288</span><span class="s13-k">Days</span></div><div class="s13-u cut cut-s"><span class="s13-v">14</span><span class="s13-k">Hours</span></div><div class="s13-u cut cut-s"><span class="s13-v">06</span><span class="s13-k">Minutes</span></div><div class="s13-u cut cut-s"><span class="s13-v">52</span><span class="s13-k">Seconds</span></div></div><div class="s13-live"><div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span><span class="lbl">Live</span></div><span class="t-body-m">Conference 1 is being played now</span></div><div class="s13-foot"><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">Full season calendar</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">How qualification works</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a></div></div></div>
+<div class="el-state"><div class="t-caption el-state-label">variant = brand — on the NL gradient, for a hero band</div><div class="S-13-Countdown--brand s13 s13-brand cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>FIBA 3x3 World Tour 2026</span></div><div class="s13-t">Next stop &middot; Debrecen</div><div clas
+
+
+===== r-02-standingstable  (pages/modules-2.html)
+PURPOSE: el-purpose">The Standings page table. Built from el-08 TableHeaderRow and el-04 TeamRow with matched cell widths, and every column is a boolean property on the row so a column change is a switch. It was two views on two tabs — the same federations, ranked the same way, with one column swapped — and it is one table now: ctl-08 ToggleSwitch cuts it down to the twenty places that are going, and the Route column went wit
+MARKUP:
+
+
+
+===== r-01-qualificationboard  (pages/modules-2.html)
+PURPOSE: el-purpose">The landing page centrepiece and the module the whole redesign turns on. Twenty rows: position, federation, conference, status. Nothing else — this replaced the old Standings block outright (LP-11, LP-12).
+in-season — Qualified and ShortlistedNations League QualificationFull sta
+MARKUP:
+
+
+
+===== e-01-teamfinder  (pages/modules-2.html)
+PURPOSE: el-purpose">The gateway built on a simple assumption: fans look for their own federation and little else. Accepts a name or an IOC code.
+default
+
+
+0 nations
+·
+0 team sites this conference
+
+
+
+
+<div class="el-11-Search
+MARKUP:
+
+
+
+===== e-04-teamheader  (pages/modules-2.html)
+PURPOSE: el-purpose">Federation identity at the top of a team page: flag, name, category, conference, qualification state, and the six numbers that describe the season. The gender switch is not part of this module: it lives in F-04 SubHeader’s control slot, at the same coordinates as on every other page, so a team page and a standings page put it in exactly the same spot.
+qualified<svg fill="none" height="66" viewBox="0 0 24 
+MARKUP:
+
+
+
+===== e-08-playercard  (pages/modules-2.html)
+PURPOSE: el-purpose">The roster tile on a team page. Four stacked layers so the whole set reskins from one background swap: background, cut-out portrait, stat column, name plate. The stat column states games, points and win ratio — three season figures rather than four per-game averages the competition does not record. Where a real cut-out exists it replaces the silhouette and a scrim of the card’s own surface fades in behind
+MARKUP:
+
+
+
+===== e-10-rostergrid  (pages/modules-2.html)
+PURPOSE: el-purpose">The squad on a team page, in two views. Cards are the default because the roster is the emotional part of a team page; the list is for anyone comparing numbers.
+view = cards
+<path clip-rule="evenodd" d="M354.123 235.469H0V0H354.12
+MARKUP:
+
+
+
+===== c-02-newsrail  (pages/modules-2.html)
+PURPOSE: el-purpose">Three stories on the landing page: image, headline, date. One card type only, so a recap generated from results sits beside a written feature without announcing which is which.
+layout = grid — three acrossKenya take Kigali and move top of Africa East18 Aug 2026<
+MARKUP:
+
+
+
+===== c-03-photogallery  (pages/modules-2.html)
+PURPOSE: el-purpose">Two carousel types plus the viewer. Auto advances on its own with a progress indicator and a pause control, and belongs on the landing page. Manual has previous and next plus a position counter, and belongs on a stop or conference page where the fan is actively browsing. Tiles are a fixed 3:2 — the ratio the photography is actually delivered in.
+type = auto — playingKigali · Stop 5<div class="car-slide cu
+MARKUP:
+
+
+
+===== c-04-newslist  (pages/modules-2.html)
+PURPOSE: el-purpose">The News index. C-02 NewsRail is the three-card row on the landing page; this is the paginated list behind it, filtered by the same category labels.
+defaultImage18 AugKenya take Kigali and move top of Africa EastUganda were held to nine in the final as Kenya closed out
+MARKUP:
+
+
+
+===== f-06-sitefooter  (pages/modules-1.html)
+PURPOSE: el-purpose">Five columns, the supplier band and the legal row. Official ball sits left, official suppliers right, so the two tiers read as separate groups rather than one long strip. The sponsor band that used to be its own module now lives here, because it never appears anywhere else.
+defaultOfficial ball
+<path d="M99.1817 22.4427C99
+MARKUP:
+<div class="S-13-Countdown--default s13 cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>Season 2027</span></div><div class="s13-t">Nations League returns</div><div class="s13-sub">Conference 1 opens in Manila &middot; 12 June 2027</div></div><div class="s13-units"><div class="s13-u cut cut-s"><span class="s13-v">288</span><span class="s13-k">Days</span></div><div class="s13-u cut cut-s"><span class="s13-v">14</span><span class="s13-k">Hours</span></div><div class="s13-u cut cut-s"><span class="s13-v">06</span><span class="s13-k">Minutes</span></div><div class="s13-u cut cut-s"><span class="s13-v">52</span><span class="s13-k">Seconds</span></div></div><div class="s13-live"><div class="el-05-StatusBadge--live badge badge-live cut cut-s"><span class="badge-dot"></span><span class="lbl">Live</span></div><span class="t-body-m">Conference 1 is being played now</span></div><div class="s13-foot"><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">Full season calendar</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a><a class="nav-a" href="#"><div class="ctl-02-Link--default lnk"><span class="lbl">How qualification works</span><svg fill="currentColor" height="18" viewBox="0 -960 960 960" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M686-450H160v-60h526L438-758l42-42 320 320-320 320-42-42 248-248Z"></path></svg></div></a></div></div></div>
+<div class="el-state"><div class="t-caption el-state-label">variant = brand — on the NL gradient, for a hero band</div><div class="S-13-Countdown--brand s13 s13-brand cut cut-l"><div class="s13-head"><div class="s13-eyebrow"><span>FIBA 3x3 World Tour 2026</span></div><div class="s13-t">Next stop &middot; Debrecen</div><div clas

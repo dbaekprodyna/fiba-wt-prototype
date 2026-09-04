@@ -1,0 +1,389 @@
+/* ============================================================
+   FIBA 3x3 World Tour 2026 — wt.css
+   THE BRAND LAYER, AND NOTHING ELSE.
+
+   Every element and module on these two pages is the Nations
+   League design system's own: ctl-01 Button, ctl-02 Link, el-01
+   SectionHeader, el-04 TeamRow, el-05 StatusBadge, el-07
+   AccordionShell, el-08 TableHeaderRow, el-11 SearchInput, el-13
+   FederationTag, el-14 Chip, el-16 Card, el-22 CarouselIndicator,
+   el-23 Breadcrumb, el-29 AdSpace, F-02, F-03, F-06, S-09, S-13,
+   E-08 PlayerCard, C-02 NewsRail, C-03 PhotoGallery — loaded from
+   the same tokens.css / base.css / elements.css / modules.css /
+   motion.css / interactions.css / behaviour.css the Nations
+   League site loads, byte for byte, plus ds-additions.css for the
+   three components this build added to the system.
+
+   What is left for this file is the four branding slots agreed
+   for the family sites, and the page layouts:
+
+     1  the home hero band
+     2  the sub-page headline and its 4px bar
+     3  the player-card key visual
+     4  the accent — and where it may NOT go
+
+   RULE ON THE ACCENT. World Tour Red is a surface and a graphic,
+   never a control. It does not touch ctl-01 Button, ctl-02 Link,
+   any focus ring, or any nav state — those stay black and white
+   in every family site, which is what makes the system a system.
+   Red's only structural job is --status-live, and that is already
+   the system's own red.
+   ============================================================ */
+
+:root {
+  --wt-red: #FF5252;
+  --wt-hero-h: 192px;
+  /* The season photograph is supplied at twice the band height so
+     the parallax has somewhere to travel. Slack each way: */
+  --wt-bg-slack: calc(var(--wt-hero-h) / 2);
+  /* el-31 MeterBar, accent variant */
+  --meter-accent: var(--wt-red);
+}
+
+/* The Nations League brand stroke is a four-colour conic gradient,
+   because the Nations League has four brand colours. The World Tour
+   has one, so the same token carries one flat value and the stroke
+   stops rotating — there is nothing for it to rotate through. Same
+   module, same token, a different value: that is the whole change. */
+.wt-brand { --brand-stroke: var(--wt-red); }
+
+html { scroll-behavior: smooth; }
+img { max-width: 100%; }
+a, .nav-a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; }
+
+/* ---------------------------------------------------------------
+   Page shell — the system's own tpl-* frame, restated only where
+   this build needs a value the Nations League pages do not use.
+   --------------------------------------------------------------- */
+.tpl-content { padding: 0 var(--page-gutter) 64px var(--page-gutter); gap: 48px; }
+.tpl-content > .tpl-sub:first-child { padding-top: 40px; }
+.wt-bleed { width: 100%; max-width: 1920px; }
+
+/* ---------------------------------------------------------------
+   BRANDING SLOT 1 — the home hero
+   The Nations League hero is .hnl: a fixed-height band, corner key
+   visuals, a centred lock-up, and four layers that travel at their
+   own speeds while the page scrolls. This is the same band with
+   World Tour artwork in it — .hwt, layer for layer.
+
+     ground      World Tour Red, the only full-bleed red on the site
+     photograph  the season plate, supplied at 2 x the band height
+     corners     the two supplied brand elements, at natural size
+     lock-up     the supplied logo plus the season strapline
+
+   THE MASK. The photograph is 384px tall inside a 192px band, so
+   it is centred with 96px of slack above and below and the band
+   clips it. The parallax may move it up to that slack and no
+   further, which is why the red ground can never appear behind it.
+   --------------------------------------------------------------- */
+.hwt {
+  position: relative;
+  height: var(--wt-hero-h);
+  background: var(--wt-red);
+  overflow: hidden;                 /* the mask */
+  isolation: isolate;
+}
+/* The supplied plate already carries the multiply of the red over
+   the photograph — it is the finished artwork, not the raw frame —
+   so it is composited straight onto the same red rather than
+   multiplied a second time, which would crush the court to black.
+   Swap to mix-blend-mode: multiply the day the untinted frame is
+   supplied; the ground underneath is already the right red. */
+.hwt-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: 100%;
+  height: calc(var(--wt-hero-h) * 2);
+  margin-top: calc(var(--wt-hero-h) * -1);
+  object-fit: cover;
+  object-position: 50% 50%;
+  mix-blend-mode: normal;
+}
+.hwt-kv {
+  position: absolute;
+  top: 0;
+  height: var(--wt-hero-h);
+  width: auto;
+  display: block;
+  pointer-events: none;
+}
+.hwt-kv-l { left: 0; }
+.hwt-kv-r { right: 0; }
+.hwt-in {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* The artwork is drawn on a 1728 canvas: the lock-up at its natural
+   385 x 52, a 21px gap, the strapline at the lock-up's own cap
+   height. Both are tied to the viewport so that proportion holds at
+   any width and the type never reaches the corner elements. */
+.hwt-lock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: clamp(12px, 1.22vw, 21px);
+  margin: 0;
+}
+.hwt-logo { display: block; width: clamp(232px, 22.28vw, 385px); height: auto; }
+.hwt-s {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.765vw, 30.5px);
+  line-height: 1;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--chrome-text);
+  white-space: nowrap;
+}
+/* wt.js writes transforms on these while the band is on screen; a
+   transition on a per-frame transform is a lag, not a motion. */
+.hwt-par { transition: none !important; }
+
+/* ---------------------------------------------------------------
+   BRANDING SLOT 2 — the sub-page headline and its 4px bar
+   F-04 SubHeader, with the supplied bar in the rule slot. The
+   headline itself stays black: red is a state colour, so a page
+   title in red would be the one thing on the page claiming to be
+   live.
+   --------------------------------------------------------------- */
+.wt-subbar { display: block; width: 100%; height: 4px; }
+.wt-subhead {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+.wt-subhead-l { display: flex; flex-direction: row; align-items: flex-end; gap: 16px; }
+.wt-h1 {
+  margin: 0;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 56px;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+.wt-h1-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---------------------------------------------------------------
+   BRANDING SLOT 3 — the player-card key visual
+   E-08 PlayerCard is four stacked layers so the whole set reskins
+   from one swap. Here the Nations League key visual is replaced by
+   the supplied World Tour card element at half the width it had,
+   and it sits ABOVE the cut-out rather than behind it.
+   --------------------------------------------------------------- */
+.pcard-kv.wt-kv { right: auto; bottom: auto; width: 55%; z-index: 4; }
+/* the court watermark is E-08's Nations League layer; the World Tour
+   card carries its own graphic in the key visual slot and does not
+   want two marks fighting in the same corner */
+.wt-cards .pcard-union, .wt-roster .pcard-union { display: none; }
+/* the stat column reads down the top-right corner the key visual
+   leaves free, so each label breaks onto its own second line */
+.wt-cards .pcard-stats, .wt-roster .pcard-stats {
+  top: 0; bottom: auto; justify-content: flex-start;
+  padding-top: 8%; gap: 14px;
+}
+.wt-cards .pcard-k, .wt-roster .pcard-k {
+  display: flex; flex-direction: column; align-items: flex-end;
+  line-height: 1.2; text-align: right;
+}
+.pcard-kv.wt-kv img { display: block; width: 100%; height: auto; }
+/* the cut-out portrait, in the box the silhouette used */
+.pcard-shot > .pcard-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+/* the rank plate the World Tour cards carry — transparent, so the
+   figure sits on the card's own surface rather than on a chip */
+.pcard-rank {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  background: transparent;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 22px;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+/* the six-up and four-up grids need the card fluid rather than 342 */
+.wt-cards, .wt-roster { display: grid; gap: 24px; width: 100%; }
+.wt-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.wt-roster { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.wt-cards .pcard-sh, .wt-roster .pcard-sh { width: 100%; display: flex; }
+.wt-cards .pcard, .wt-roster .pcard { width: 100%; }
+
+/* ---------------------------------------------------------------
+   Page layouts — grids the Nations League pages do not have.
+   Nothing here restyles a system element.
+   --------------------------------------------------------------- */
+.wt-news { display: grid; grid-template-columns: minmax(0, 652px) minmax(0, 1fr); gap: 24px; width: 100%; }
+.wt-news-side { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-content: start; }
+.wt-news .c02-himg { width: 100%; height: auto; aspect-ratio: 16 / 9; overflow: hidden; }
+.wt-news .c02-himg img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* the lead card is taller than the four beside it, so without this
+   its body would centre itself in the leftover height and the label,
+   headline and date would drift away from the photograph. Every card
+   in the rail sits its body directly under its picture. */
+.wt-news .c02-hcard { align-self: start; }
+.wt-news .c02-hb { flex: 0 0 auto; justify-content: flex-start; }
+.wt-news-lead .c02-title { font-size: 30px; line-height: 36px; letter-spacing: -0.2px; }
+@media (prefers-reduced-motion: no-preference) {
+  .wt-news .c02-himg img { transition: transform var(--dur-slow) var(--ease-out); }
+  .live .wt-news .c02-hcard:hover .c02-himg img { transform: scale(1.05); }
+}
+.live .wt-news .c02-hcard:hover .c02-title {
+  text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px;
+}
+
+.wt-split { display: grid; grid-template-columns: minmax(0, 952px) minmax(300px, 1fr); gap: 36px; align-items: start; width: 100%; }
+.wt-split > .tpl-colL, .wt-split > .tpl-colR { max-width: none; width: auto; gap: 48px; }
+
+.wt-find { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; width: 100%; }
+.wt-road { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; }
+.wt-road > .card { width: 100%; }
+/* THE FINAL — the one card in the row that is a place rather than a
+   table. It gets the photograph, and the type sits on it. */
+.wt-final { position: relative; overflow: hidden; }
+.wt-final-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wt-final-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,10,10,.25) 0%, rgba(10,10,10,.62) 46%, rgba(10,10,10,.88) 100%);
+}
+.wt-final-in {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  gap: 10px; min-height: 240px; padding: 20px 24px 22px 24px;
+}
+.wt-final-in .t-caption, .wt-final-in .t-h3, .wt-final-in .t-body-s { color: var(--chrome-text); }
+.wt-final-in .t-body-s { color: rgba(255,255,255,.78); }
+.wt-shorts { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px; width: 100%; }
+.wt-photos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; width: 100%; }
+.wt-photos .car-slide { width: 100%; height: auto; aspect-ratio: 3 / 2; padding: 0; position: relative; overflow: hidden; }
+.wt-photos .car-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.wt-photos .car-cap {
+  position: absolute; right: 10px; bottom: 10px;
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px;
+  background: var(--chrome-bg); color: var(--chrome-text);
+  font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.6px;
+}
+
+/* the card body inside a plain surface — used by Find, Road, Event
+   selections; all of them are el-16 Card with a different body */
+.wt-pad { padding: 20px 24px 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.wt-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* S-09 Overview: four figures rather than the Nations League's two
+   lines. The module, its surface and its type are untouched. */
+.wt-ov-line { width: 100%; }
+.wt-ov-line .s09-k { width: auto; flex: 1 1 0; gap: 10px; white-space: nowrap; }
+.wt-ov-line .s09-kv { width: auto; flex: 0 0 auto; }
+.s09-seg { height: 100%; }
+
+/* E-04 TeamHeader spotlight — seven figures across one surface */
+.wt-spot { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); width: 100%; }
+.wt-spot-c { display: flex; flex-direction: column; gap: 4px; padding: 20px; border-left: 1px solid var(--border-subtle); }
+.wt-spot-c:first-child { border-left: 0; }
+.wt-spot-v {
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  font-size: 36px; line-height: 38px; color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.wt-two { display: grid; grid-template-columns: minmax(0, 500px) minmax(0, 1fr); gap: 36px; align-items: start; width: 100%; }
+
+/* Tables: el-08 TableHeaderRow + el-04 TeamRow with the cell
+   widths this build's columns need. The rows themselves are the
+   system's — height, border, hover and all. */
+.wt-tbl { display: flex; flex-direction: column; width: 100%; }
+.c-rk { width: 56px; }
+.c-team { flex: 1 1 0; min-width: 0; }
+.c-pool { width: 64px; }
+.c-n1 { width: 92px; justify-content: flex-end; }
+.c-n2 { width: 108px; justify-content: flex-end; }
+.c-tier { width: 128px; }
+.c-event { flex: 1 1 0; min-width: 200px; }
+.c-dates { width: 132px; }
+.c-entry { width: 210px; }
+.wt-tbl .trow:last-child { border-bottom: 0; }
+/* one line per row: a club name is a name, not a paragraph */
+.wt-tbl .ftag, .wt-tbl .ftag-txt { min-width: 0; }
+.wt-tbl .ftag-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wt-tbl .ftag-code { flex: 0 0 auto; }
+.wt-tbl .trow-sm { height: 44px; }
+.wt-me .ftag-code { color: var(--text-primary); }
+
+/* S-01's accordion body holds a live game strip above the field */
+.wt-game {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
+  width: 100%; padding: 16px 8px 20px 8px;
+}
+.wt-game-t { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.wt-game-t.r { justify-content: flex-end; }
+.wt-game-n { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; line-height: 26px; text-transform: uppercase; }
+.wt-game-s { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 34px; line-height: 34px; font-variant-numeric: tabular-nums; min-width: 38px; text-align: center; }
+.wt-game-mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+/* ---------------------------------------------------------------
+   Narrower desktops. The build is drawn at 1440; below that the
+   two fixed columns give, then the page falls to one column.
+   --------------------------------------------------------------- */
+@media (max-width: 1400px) {
+  .f03-i { font-size: 16px; padding: 0 12px; }
+  .f03-word { padding: 0 16px 0 28px; }
+}
+@media (max-width: 1200px) {
+  .f03-i { font-size: 15px; padding: 0 9px; }
+  .f03-mark { padding: 0 28px 0 20px; }
+  .f03-word { padding: 0 12px 0 20px; }
+  .wt-cards, .wt-shorts, .wt-roster { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .wt-spot { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .wt-spot-c:nth-child(5) { border-left: 0; }
+  .wt-spot-c:nth-child(n+5) { border-top: 1px solid var(--border-subtle); }
+  .f06-cols { flex-wrap: wrap; }
+}
+@media (max-width: 1100px) {
+  .wt-split, .wt-two { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .wt-news { grid-template-columns: minmax(0, 1fr); }
+  .wt-road, .wt-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .f03-list { flex-wrap: wrap; }
+}
+@media (max-width: 1000px) {
+  .wt-find { grid-template-columns: minmax(0, 1fr); }
+  .wt-cards, .wt-shorts, .wt-roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .f03 { height: auto; flex-wrap: wrap; }
+  .f03-nav { flex: 1 1 100%; justify-content: flex-start; height: auto; }
+  .f03-list { height: auto; padding: 0; }
+  .f03-i, .f03-search, .f03-season { height: 48px; }
+}

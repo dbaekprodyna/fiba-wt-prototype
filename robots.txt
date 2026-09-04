@@ -1,0 +1,16 @@
+# FIBA 3x3 World Tour 2026 — prototype
+#
+# Crawling is deliberately ALLOWED here. The pages carry
+#   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+# and that tag is what keeps them out of search results — but a crawler
+# can only obey it if it is allowed to fetch the page and read it.
+# Disallowing the path here would do the opposite of what it looks like:
+# the crawler would never see the noindex, and a URL someone links to
+# could still be listed as a bare result.
+#
+# Do not add a Disallow line unless you also remove the noindex tags.
+
+User-agent: *
+Allow: /
+
+# No sitemap on purpose.

@@ -1,0 +1,406 @@
+/* ============================================================
+   FIBA 3x3 Nations League — behaviour.css
+   Hand-written interaction that has no specimen equivalent:
+   cursors, open/close, clipping, layout corrections.
+
+   Its sibling assets/interactions.css is GENERATED from the
+   specimen modifier classes by tools/gen_states.py.
+   Do not hand-edit that file — edit the modifier in
+   elements.css / modules.css and regenerate.
+   ============================================================ */
+
+.live .btn, .live .lnk, .live .tab, .live .chip, .live .card-int,
+.live .pag-i, .live .ntab, .live .alpha-i, .live .f03-i, .live .f03-search,
+.live .crumb:not(.crumb-cur), .live .disc-head, .live .acc-head,
+.live .acm-row, .live .ac-row, .live .e09-cell, .live .dsel, .live .dsel-item,
+.live .shm-i, .live .shm-trig, .live .ftag, .live .dotb, .live .wl,
+.live .el02-seg, .live .mm-l, .live .trow, .live .s05-row, .live .s06-side,
+.live .r01-row, .live .e10-row, .live .s03-d, .live .s03nav, .live .car-btn,
+.live .lb-tile, .live .lb-act, .live .lb-nav, .live .c02-card, .live .c02-hcard,
+.live .c04-row, .live .chip-x, .live .ftag-x, .live .tip-anchor,
+.live .f06-link, .live .f06-sponlogos > *, .live .f06-social > *,
+.live .stopnav-i, .live .ind-d, .live .ind-prog {
+  cursor: pointer;
+}
+.live .btn-primary-disabled, .live .btn-outline-disabled,
+.live .btn-ghost-disabled { cursor: default; }
+.live .crumb-cur { cursor: default; pointer-events: none; }
+
+/* ---- Row hovers — a module decision, not an element state ---- */
+.live .s05-row:hover  { background: var(--surface-sunken); }
+.live .s06-side:hover { background: var(--surface-sunken); }
+.live .r01-row:hover  { background: var(--surface-sunken); }
+.live .e10-row:hover  { background: var(--surface-sunken); }
+.live .c04-row:hover  { background: var(--surface-sunken); }
+.live .c02-card:hover { background: var(--action-default); }
+.live .e11-dark .e11-row:hover,
+.live .ovl .e11-row:hover { background: var(--chrome-hover); }
+.live .s03nav:not(.s03nav-dis):hover { background: var(--action-default); }
+.live .car-btn:not(.car-btn-dis):hover { background: var(--action-default); }
+.live .lb-nav:hover { background: var(--action-default); }
+
+/* ---- Headline underlines -------------------------------------
+   text-decoration follows the glyphs. A border or an inset shadow
+   follows the box, so a short last line gets underlined empty
+   space to the right of the text.                                */
+.live .c02-card:hover .c02-title,
+.live .c02-hcard:hover .c02-title,
+.live .c04-row:hover .c04-t,
+.live .e03-conf:hover .e03-name,
+.live .f06-link:hover,
+.live .crumb:not(.crumb-cur):hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.live .e03-conf:hover .e03-name { color: var(--text-primary); }
+
+/* ---- Corner cuts covered by edge-to-edge children -------------
+   A cut container paints its 45° corners with its own background.
+   Any child that fills edge to edge paints over them, so it has to
+   carry the same cut at the inner radius (--ic).
+
+   .cutfill is the FIRST DOM child of every cut container, so
+   :first-of-type matches that, never the first row. Use adjacency
+   instead — this is why the bracket kept its square top corner
+   through two rounds of fixes.                                   */
+.live [data-open="false"] > .acc-head,
+.live [data-open="false"] > .disc-head {
+  clip-path: polygon(var(--ic, 0px) 0, 100% 0, 100% calc(100% - var(--ic, 0px)),
+                     calc(100% - var(--ic, 0px)) 100%, 0 100%, 0 var(--ic, 0px));
+}
+.s06-game > .cutfill + .s06-side,
+.s06-game > .s06-side:first-child {
+  clip-path: polygon(var(--ic) 0, 100% 0, 100% 100%, 0 100%, 0 var(--ic));
+}
+.s06-game > .s06-side:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--ic)),
+                     calc(100% - var(--ic)) 100%, 0 100%);
+}
+
+/* ---- Live-demo form controls are real inputs ------------------
+   `appearance: none` is the important one. Safari paints a native
+   bezel inside every <input>, and a rounded one on type="search";
+   border:0 and outline:0 do not remove it. That bezel was the inner
+   rectangle that kept appearing next to the focus ring.           */
+.live input, .live .fld-in, .live .search-in, .live .f03m-searchbar input {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1 1 0; min-width: 0;
+  border: 0; outline: 0; box-shadow: none;
+  border-radius: 0;
+  background: transparent; color: inherit; font: inherit; letter-spacing: inherit;
+}
+.live input::-webkit-search-decoration,
+.live input::-webkit-search-cancel-button,
+.live input::-webkit-search-results-button,
+.live input::-webkit-search-results-decoration { -webkit-appearance: none; display: none; }
+.live input::-webkit-inner-spin-button,
+.live input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.live .fld-in::placeholder, .live .search-in::placeholder { color: var(--text-muted); }
+.live .fld:focus-within .fld-in,
+.live .search:focus-within .search-in { color: var(--text-primary); }
+
+/* ---- Open / close --------------------------------------------- */
+.live .acc-panel { display: block; transition: height var(--dur-slow) var(--ease-in-out); }
+/* A collapsed panel must lose its padding and rule as well — with
+   border-box, height:0 still leaves 24 + 24 + 1px standing. Padding is
+   not transitioned: it goes at the same instant the collapse starts,
+   which is invisible, and it keeps the measured height honest. */
+.live [data-open="false"] > .acc-panel {
+  height: 0;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top-width: 0;
+}
+.live .s03nav-off { opacity: 0.32; pointer-events: none; }
+.live .acc-head svg, .live .disc-head svg { transition: transform var(--dur-base) var(--ease-out); }
+.live [hidden] { display: none !important; }
+.live .shm-trig { user-select: none; }
+
+/* ---- Carousel -------------------------------------------------- */
+.live .car-viewport { overflow: hidden; width: 100%; }
+.live .car-stage { transition: transform var(--dur-slow) var(--ease-in-out); will-change: transform; }
+.live .ind-fill { width: 0; }
+.live .car-btn.car-playing .car-ico-play { display: none; }
+.live .car-btn.car-playing .car-ico-pause { display: block; }
+.live .car-btn:not(.car-playing) .car-ico-play { display: block; }
+.live .car-btn:not(.car-playing) .car-ico-pause { display: none; }
+
+/* ---- C-03 photographs keep a landscape ratio ------------------
+   Fixed width plus the default flex-shrink:1 squeezed slides into
+   slivers as soon as the set doubled. .lb-img is excluded — it has
+   its own fixed stage size and a ratio there overflowed the modal. */
+.car-slide, .lb-tile { flex: 0 0 auto; aspect-ratio: 3 / 2; height: auto; }
+.lb-tile {
+  position: relative; background-clip: border-box;
+  --n: 0px; border: 0 solid transparent; --of: var(--surface-sunken);
+}
+.live .lb-tile:hover { --n: 2px; border-width: 2px; background: var(--action-default); }
+
+/* ---- el-16 Card — rests flat (e0), lifts on hover (e2) -------- */
+.live .card-int { transition: filter var(--dur-fast) var(--ease-out); }
+.live .card-int:hover { filter: drop-shadow(0 3px 6px rgba(0,0,0,.20)); }
+
+/* ---- S-04 GameList — the away side mirrors the home side ------
+   Reading outward from the score: name, code, flag. The cells are
+   .c-home / .c-away, not .s04-team — an earlier fix targeted
+   classes that do not exist in this markup.                      */
+.c-away { justify-content: flex-end; }
+.c-away .ftag, .c-away .ftag-txt { flex-direction: row-reverse; }
+.c-box { align-items: center; }
+
+/* ---- S-09 SeasonStatus — the two segments meet ---------------- */
+.s09-live { margin-left: -8px; }
+.s09-k { gap: 7px; padding-left: 7px; }
+.s09-line { gap: 10px; }
+.s09-lab { width: 150px; }
+
+/* ---- E-11 SearchResults --------------------------------------- */
+.e11 > .search, .e11-dark > .search { width: 100%; }
+.e11-dark .sk { background: var(--chrome-bg-2); }
+@media (prefers-reduced-motion: no-preference) {
+  .e11-dark .sk { animation: sk-pulse-dark 1.6s var(--ease-in-out) infinite; }
+}
+@keyframes sk-pulse-dark {
+  0%, 100% { background: var(--chrome-bg-2); }
+  50%      { background: #3A3A3A; }
+}
+
+/* ---- el-09 Legend attached flush to a table ------------------- */
+.legend-attached { margin-top: 0; padding-top: 12px; border-top: 0; }
+
+/* ---- F-06 SiteFooter — sponsor and social marks are links ----- */
+.f06-sponlogos > *, .f06-social > * {
+  color: var(--chrome-text-muted); opacity: .75;
+  transition: color var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+.live .f06-sponlogos > *:hover, .live .f06-social > *:hover { color: var(--chrome-text); opacity: 1; }
+.live .f06-sponlogos > *:focus-visible, .live .f06-social > *:focus-visible {
+  outline: 2px solid var(--chrome-text); outline-offset: 3px; opacity: 1;
+}
+.live .f06-link:hover { color: var(--chrome-text); }
+
+/* el-13 FederationTag inside a card that is itself the link. The tag
+   keeps its shape but stops behaving like a target of its own. */
+.live .ftag-static { cursor: inherit; }
+
+/* ---- F-03m mobile "More" sheet --------------------------------
+   Full-screen panel on the chrome surface, matching the reference
+   prototype's grouping: Nations League / Info / Competition Family. */
+.f03m-sheet {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: 390px;
+  background: var(--chrome-bg);
+  color: var(--chrome-text);
+  z-index: 20;
+}
+.f03m-sheet-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  padding: 0 16px 0 20px;
+  border-bottom: 1px solid var(--chrome-line);
+}
+.f03m-sheet-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 20px 24px 20px;
+  overflow-y: auto;
+}
+.f03m-grp { display: flex; flex-direction: column; gap: 2px; padding: 14px 0 6px 0; }
+.f03m-grp + .f03m-grp { border-top: 1px solid var(--chrome-line); }
+.f03m-grp-h {
+  font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--chrome-text-muted);
+  padding-bottom: 6px;
+}
+.f03m-l {
+  display: flex; align-items: center; justify-content: space-between;
+  min-height: 48px; padding: 0 4px;
+  font-family: 'Barlow', sans-serif; font-weight: 600; font-size: 17px;
+  color: var(--chrome-text);
+}
+.f03m-ext { color: var(--chrome-text-muted); font-size: 14px; }
+.live .f03m-l { cursor: pointer; }
+.live .f03m-l:hover { background: var(--chrome-hover); }
+.live .f03m-l:focus-visible { outline: 2px solid var(--chrome-text); outline-offset: -2px; }
+.f03m-stage { position: relative; }
+
+/* ---- Keyboard focus fallback ---------------------------------- */
+/* .fld-in / .search-in are excluded: the field container draws the
+   ring, so the bare <input> inside it must never draw a second one.
+   The exclusion has to live on this rule — a later `outline: none`
+   rule loses to it on specificity. */
+.live :focus-visible:not(.cut-out):not(.btn):not(.chip):not(.ftag):not(.card-int):not(.fld-in):not(.search-in) {
+  outline: 2px solid var(--action-default);
+  outline-offset: 2px;
+}
+.live .disc-dark :focus-visible, .live .f03 :focus-visible,
+.live .tabbar :focus-visible, .live .ovl :focus-visible,
+.live .e11-dark :focus-visible, .live .f03m-sheet :focus-visible {
+  outline-color: var(--chrome-text);
+}
+
+/* ============================================================
+   Review round 5
+   ============================================================ */
+
+/* The container carries the focus ring; the input inside it must
+   not draw a second one. */
+.live .fld-in:focus, .live .search-in:focus,
+.live .fld-in:focus-visible, .live .search-in:focus-visible,
+.live .fld:focus-within .fld-in, .live .search:focus-within .search-in {
+  outline: none; box-shadow: none; border: 0;
+}
+
+/* ctl-04 on dark chrome — the ring has to read against #171717. */
+.live .darkbed .dsel:focus-visible,
+.live .dsel:focus-visible { --of: var(--chrome-bg-2); background: #FFFFFF; --n: 2px; border: 2px solid transparent; }
+
+/* el-08 sortable header cells are controls. */
+.live .cell-sortable { cursor: pointer; }
+
+/* el-11 — the trailing X clears the field. */
+.live .search-clear { cursor: pointer; color: var(--text-muted); }
+.live .search-clear:hover { color: var(--text-primary); }
+
+/* el-28 / C-05 share trigger. */
+.live .shm-trig:hover { --of: var(--surface-sunken); }
+
+/* E-08 PlayerCard — e1 at rest, e2 on hover. */
+.live .pcard-sh { transition: filter var(--dur-fast) var(--ease-out); }
+.live .pcard-sh:hover { filter: drop-shadow(0 3px 6px rgba(0,0,0,.20)); }
+
+/* S-04 GameList — the HOME side (left of the score) reads outward:
+   name, code, flag. The away side keeps flag, code, name. */
+.c-home { justify-content: flex-end; }
+.c-home .ftag, .c-home .ftag-txt { flex-direction: row-reverse; }
+.c-away { justify-content: flex-start; }
+.c-away .ftag, .c-away .ftag-txt { flex-direction: row; }
+
+/* el-30 CalendarStrip — selected is a filled black cell, matching
+   el-03 FilterChips. */
+.s03-on { background: var(--action-default); --of: var(--action-default); }
+.s03-on .s03-num, .s03-on .s03-dow { color: var(--text-inverse); }
+
+/* F-03m — the sheet is a panel, not a strip. */
+.f03m-sheet-top { height: 56px; padding: 0 20px; }
+.f03m-close { padding: 8px 4px; }
+
+/* ============================================================
+   Review round 6
+   ============================================================ */
+
+/* E-08 PlayerCard — e1 at rest, e2 on hover. The card clips its
+   own artwork, so the shadow has to come from a filter, and the
+   grid needs room for it. */
+.e10, .pcard-row { padding: 6px; }
+.live .pcard-sh { transition: filter var(--dur-fast) var(--ease-out); }
+.live .pcard-sh:hover { filter: drop-shadow(0 3px 6px rgba(0,0,0,.20)); }
+
+/* F-03m — search bar under the header. */
+.f03m-searchbar {
+  display: flex; align-items: center; gap: 10px;
+  height: 56px; padding: 0 16px 0 20px;
+  background: var(--chrome-bg-2); color: var(--chrome-text);
+}
+.f03m-searchbar input {
+  flex: 1 1 0; min-width: 0; border: 0; outline: 0; background: transparent;
+  color: var(--chrome-text); font: 600 15px 'Barlow', sans-serif;
+}
+.f03m-searchbar input::placeholder { color: var(--chrome-text-muted); }
+.f03m-search { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--chrome-text); }
+.live .f03m-search { cursor: pointer; }
+.live .f03m-search:hover { background: var(--chrome-hover); }
+.live .f03m-search:focus-visible { outline: 2px solid var(--chrome-text); outline-offset: -2px; }
+
+/* F-06 — the sponsor band is full bleed; only its content is inset. */
+.stage .f06 { padding-left: 0; padding-right: 0; }
+.stage .f06-spon { padding-left: 40px; padding-right: 40px; }
+.stage .f06-cols, .stage .f06-brandrow, .stage .f06-bar { padding-left: 40px; padding-right: 40px; }
+.stage .mm { padding-left: 0; padding-right: 0; }
+.stage .mm-in, .stage .mm-top { padding-left: 40px; padding-right: 40px; }
+
+/* ============================================================
+   Review round 7
+   ============================================================ */
+
+/* R-01 QualificationBoard was drawn at 1400 while its neighbours
+   are 1440. Both are fluid now, so the widths agree. */
+.r01, .r04, .r05, .tbl { width: 100%; }
+
+/* E-08 PlayerCard — e1 at rest, e2 on hover. The drop-shadow needs
+   room inside the grid, and the card must not be clipped by it. */
+.e10, .pcard-row, .pcard-layers { padding: 8px; }
+.live .pcard-sh { transition: filter var(--dur-fast) var(--ease-out); }
+.live .pcard-sh:hover { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .20)); }
+
+/* F-03m — a phone frame at the iPhone 17 ratio (402 × 874 pt).
+   At our 390 width that is 848 tall. */
+.f03m-stage {
+  position: relative;
+  width: 390px;
+  height: 848px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface-page);
+  border: 1px solid var(--border-default);
+}
+.f03m-body { flex: 1 1 0; overflow-y: auto; }
+/* the menu sits above the bar, which stays visible */
+.f03m-stage .f03m-sheet { top: 56px; bottom: 64px; }
+.f03m-stage .tabbar { margin-top: auto; }
+.f03m-sheet-top { height: 72px; padding: 0 20px; }
+.f03m-close { padding: 16px 4px; }
+
+/* the search overlay drops under the header, over the page */
+.f03m-overlay {
+  position: absolute;
+  left: 0; right: 0; top: 56px; bottom: 64px;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  background: var(--chrome-bg);
+  overflow-y: auto;
+}
+.f03m-overlay .e11 { padding: 16px 20px 24px 20px; gap: 20px; }
+.f03m-overlay .search { width: 100%; }
+
+/* S-05 Pools — the column headers explain themselves on click */
+.s05-th { display: inline-flex; align-items: center; gap: 4px; }
+.live .s05-th .tip-anchor { padding: 2px; }
+
+/* ============================================================
+   Review round 9 — fluid containers
+   Fixed container widths were rewritten at source by
+   tools/fluidify.py (width:Npx → width:100%; max-width:Npx).
+   What is left here is the handful of inner pieces that still
+   need to give way.
+   ============================================================ */
+.el-purpose, .el-note, .fn-note, .m-family-desc, .doc-sub {
+  max-width: 100%;
+  width: auto;
+}
+.el-states, .m-states, .el-states-col, .fn-row, .stroke-row, .elev-row, .bs-demo {
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.tpl, .tpl-content, .tpl-sub, .tpl-split { width: 100%; max-width: 100%; min-width: 0; }
+.tpl-colL, .tpl-colR { min-width: 0; }
+
+/* ---- Notes sit inside the content column, not against its edge ---- */
+.el-note {
+  padding: 16px 24px 18px 24px;
+  max-width: 100%;
+}
+.el-note > * { padding-left: 0; }
+.fn-note, .m-family-desc { padding-left: 0; }
+.stage .el-note { margin-left: 0; margin-right: 0; }
