@@ -1,0 +1,403 @@
+/* ============================================================
+   FIBA 3x3 World Tour 2026 — mobile.css
+   The phone and tablet layer. Loaded last, so every rule here is
+   an override of the desktop sheets rather than a fork of them:
+   one URL, one codebase, one design system.
+
+   The chrome is the Nations League's, rule for rule — the same
+   F-03m header, the same el-18 NavTab bar, the same More sheet,
+   at the sizes those two rounds of mobile review settled on.
+   What is new to this file is the World Tour's own page: five
+   sections that are grids on a desktop and rails on a phone.
+
+   Breakpoint contract (the Nations League's, unchanged)
+     <= 767px    phone. Single column, mobile chrome, rails.
+     768–1099px  tablet. The mobile chrome is kept — the desktop
+                 nav needs ~1100px for its nine items — and the
+                 content goes to two columns.
+     >= 1100px   desktop. Untouched by this file.
+   ============================================================ */
+
+/* mobile.js injects the chrome and the footer stack on every
+   page whatever the width; hiding them here is what keeps the
+   desktop untouched. */
+.mnav { display: none; }
+.f06m-cols { display: none; }
+.wt-railind { display: none; }
+
+
+/* ============================================================
+   A. Site chrome — F-02/F-03 out, F-03m + el-18 tab bar in
+   ============================================================ */
+@media (max-width: 1099px) {
+
+  .f03, .f02 { display: none; }
+  .mnav { display: block; }
+
+  /* ---- F-03m header ---------------------------------------- */
+  .mnav-bar-top {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 60;
+    width: auto;
+    height: 56px;
+    padding: 0 8px 0 0;
+    gap: 12px;
+  }
+  .f03m-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 56px;
+    padding: 0 22px 0 16px;
+    background: var(--chrome-text);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 56px * var(--slant-run)) 100%, 0 100%);
+  }
+  .f03m-mark svg { display: block; height: 24px; width: auto; }
+  .mnav-bar-top > .f03m-l:first-of-type { gap: 12px; }
+  .mnav-bar-top .brandlogo img { display: block; height: 18px; width: auto; }
+  .mnav-bar-top > .f03m-search { margin-left: auto; }
+
+  /* ---- el-18 NavTab bar ------------------------------------ */
+  .mnav-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 60;
+    width: auto;
+    height: auto;
+    padding: 0 4px env(safe-area-inset-bottom, 0px) 4px;
+  }
+  /* The chrome's links are the layout, so they are real flex
+     items — not the display:contents a.nav-a wrapper the page
+     builder uses everywhere else. */
+  .mnav-tab, .mnav a.f03m-l { text-decoration: none; color: inherit; }
+  .mnav-tab { display: flex; flex: 1 1 0; min-width: 0; }
+  .mnav-bar .ntab { width: 100%; height: 66px; padding: 0; }
+  .mnav-bar .ntab > svg { width: 26px; height: 26px; flex: 0 0 auto; }
+  .mnav-bar .ntab-bar { width: 100%; }
+  /* A 26px glyph on a dark bar reads heavy; the system's answer
+     is to stroke it in the bar's own colour rather than to draw
+     a second, thinner icon set. */
+  .mnav-bar .ntab > svg > path {
+    stroke: var(--chrome-bg);
+    stroke-width: 22;
+    stroke-linejoin: round;
+    paint-order: fill stroke;
+  }
+  .mnav-bar .ntab-l {
+    font-size: 8px;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  /* the ground under the bar, so a page scrolling past it does
+     not show through the safe area */
+  .mnav::after {
+    content: '';
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 54;
+    height: calc(68px + env(safe-area-inset-bottom, 0px));
+    background: var(--chrome-bg);
+    pointer-events: none;
+  }
+
+  /* ---- the More sheet -------------------------------------- */
+  .mnav-sheet {
+    position: fixed;
+    inset: 56px 0 68px 0;
+    width: auto;
+    z-index: 55;
+    overflow-y: auto;
+  }
+  .mnav-sheet[hidden] { display: none; }
+  .mnav-sheet .f03m-sheet-top { height: 56px; }
+  .f03m-sheet-body { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  .mnav-locked, .mnav-locked body { overflow: hidden; }
+
+  /* ---- room for the two fixed bars -------------------------
+     The Nations League pages carry a .tpl wrapper and put the
+     padding on it. This build's page IS the body. */
+  body {
+    padding-top: 56px;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Floor under everything below: a page may scroll down, never
+     sideways. */
+  html, body { overflow-x: hidden; }
+}
+
+
+/* ============================================================
+   B. Page frame  (phone)
+   ============================================================ */
+@media (max-width: 767px) {
+
+  :root { --page-gutter: 16px; --gutter: 16px; }
+
+  .tpl-content {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 40px;
+    gap: 40px;
+  }
+  .tpl-content > .tpl-sub:first-child { padding-top: 24px; }
+
+  img, svg, canvas, video { max-width: 100%; }
+
+  /* Every two-column template is one column. */
+  .tpl-split, .wt-split, .wt-two { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .tpl-colR, .tpl-split .tpl-colR.col-3 { flex: 1 1 auto; max-width: none; width: 100%; }
+  .wt-split > .tpl-colL, .wt-split > .tpl-colR { gap: 40px; }
+  .wt-find { grid-template-columns: minmax(0, 1fr); }
+
+  /* ---- type scale ------------------------------------------ */
+  .t-h2 { font-size: 24px; line-height: 28px; }
+  .t-h3 { font-size: 17px; line-height: 22px; }
+  .t-body-l { font-size: 16px; line-height: 24px; }
+  .wt-news-lead .c02-title { font-size: 22px; line-height: 27px; }
+
+  /* ---- touch targets --------------------------------------- */
+  .chip, .btn, .dsel, .pag-i, .car-btn { min-height: 44px; }
+  .f02-famlink { min-height: 44px; display: inline-flex; align-items: center; }
+
+  /* ---- S-14 StopBar ---------------------------------------
+     Fourteen Masters is a rail on any screen; on a phone the
+     paging arrows are a target nobody hits, and the swipe is
+     the control. */
+  .s14 { padding: 0 12px; gap: 8px; }
+  .s14-nav { display: none; }
+  .s14-scroll { scrollbar-width: none; }
+  .s14-scroll::-webkit-scrollbar { display: none; }
+
+  /* ---- the hero band --------------------------------------
+     The lock-up and its strapline are one 1728px-wide line. At
+     390 the strapline runs off the edge, so the two stack: the
+     lock-up at the width the band has, the strapline centred
+     under it and allowed to wrap. The corner key visuals are
+     drawn at the band's full height and there is no room beside
+     the lock-up for them on a phone. */
+  .hwt-in { padding: 0 16px; }
+  .hwt-lock { flex-direction: column; align-items: center; gap: 10px; }
+  .hwt-logo { width: min(72vw, 280px); }
+  .hwt-s {
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.6px;
+    white-space: normal;
+    text-align: center;
+  }
+  .hwt-kv-l, .hwt-kv-r { display: none; }
+
+  /* ---- S-13 Countdown -------------------------------------- */
+  .s13 { flex-direction: column; align-items: flex-start; gap: 16px; height: auto; }
+  .s13-units { width: 100%; }
+
+  /* ---- el-01 SectionHeader ---------------------------------
+     A title, a timestamp and a link on one 358px line is three
+     things fighting for the same space. The row wraps, which is
+     what the Nations League's phone layer does with it too. */
+  .el01 { flex-wrap: wrap; row-gap: 8px; align-items: flex-start; }
+  .el01-left { min-width: 0; }
+
+  /* ---- S-09 Overview --------------------------------------
+     A 170px label, four 150px figures and a progress meter is
+     one 900px line. The block becomes a column: the label sits
+     over its own figures, the figures pair up two to a row, and
+     the meter is the last line rather than a fifth column. The
+     rule between figures belongs to the second of each pair —
+     an odd-numbered key starts a row and starts it clean. */
+  .s09 { flex-direction: column; align-items: stretch; gap: 18px; padding: 20px 16px; }
+  .s09-lines { gap: 18px; }
+  .s09-line { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .s09-lab { width: auto; }
+  .s09-brk { flex-wrap: wrap; row-gap: 10px; width: 100%; }
+  /* wt.css states `.wt-ov-line .s09-k { flex: 1 1 0 }` at two
+     classes, so the phone's width has to be stated at two as
+     well or three keys share a line that has room for two. */
+  .s09-k,
+  .wt-ov-line .s09-k {
+    box-sizing: border-box;
+    width: 50%;
+    flex: 0 0 50%;
+    gap: 10px;
+    padding-left: 12px;
+    white-space: normal;
+  }
+  .s09-k:nth-child(odd),
+  .wt-ov-line .s09-k:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .s09-kv, .wt-ov-line .s09-kv { width: auto; min-width: 26px; flex: 0 0 auto; }
+  .s09-right { width: 100%; }
+
+  /* ---- S-01 LiveAccordion ---------------------------------
+     The head is two rows of controls side by side on a desktop:
+     the identity on the left, the stop dots and the caret on
+     the right. At 358px they overlap. Each becomes a line of
+     its own, the same way the design system's phone layer folds
+     el-07. */
+  .acc-head {
+    height: auto;
+    min-height: 56px;
+    padding: 12px 12px 12px 14px;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .acc-left { min-width: 0; gap: 10px; flex: 1 1 100%; flex-wrap: wrap; }
+  .acc-left > * { min-width: 0; }
+  .dots-wrap { gap: 8px; flex-wrap: wrap; }
+
+  /* the live game strip: three columns of 34px figures do not
+     fit beside two team names, so the score is its own line */
+  .wt-game {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    gap: 10px;
+    padding: 14px 8px 18px 8px;
+  }
+  .wt-game-t, .wt-game-t.r { justify-content: center; }
+  .wt-game-mid { order: -1; }
+
+  /* ---- R-02 tables ----------------------------------------
+     The pool, seed and points columns are stated at desktop
+     widths — 64 + 92 + 108 — which leaves 94px for a team name
+     that carries a flag, a name and a code. The three figure
+     columns come in to what their figures need and the name
+     column takes what that frees, so the table fits the screen
+     instead of scrolling. overflow-x stays as the floor under a
+     table this does not reach. */
+  .wt-tbl {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .wt-tbl::-webkit-scrollbar { display: none; }
+  .cell { padding: 0 8px; }
+  .wt-tbl .c-pool { width: 44px; flex: 0 0 44px; }
+  .wt-tbl .c-n1   { width: 52px; flex: 0 0 52px; }
+  .wt-tbl .c-n2   { width: 62px; flex: 0 0 62px; }
+  .wt-tbl .c-team { flex: 1 1 0; min-width: 0; }
+  .wt-tbl .thead .cell .t-caption { white-space: normal; }
+
+  /* ---- E-04 TeamHeader ------------------------------------- */
+  .wt-subhead { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .wt-subhead-l { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .wt-spot { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wt-spot-c { padding: 16px; }
+  .wt-spot-c:nth-child(odd) { border-left: 0; }
+  .wt-spot-c:nth-child(n+3) { border-top: 1px solid var(--border-subtle); }
+
+  /* ---- F-06 footer ----------------------------------------- */
+  .f06-cols { display: none; }
+  .f06m-cols { display: flex; flex-direction: column; padding: 8px 16px 16px 16px; }
+  .f06m-cols .disc { width: 100%; }
+  .f06m-cols .disc-head { cursor: pointer; }
+  .f06m-cols .disc-chev {
+    transition: transform var(--dur-fast) var(--ease-out);
+    color: var(--chrome-text-muted);
+  }
+  .f06m-cols .disc-open .disc-chev { transform: rotate(180deg); }
+  .f06m-cols .disc-body { display: none; }
+  .f06m-cols .disc-open .disc-body { display: block; }
+  .f06m-cols .disc-link { display: block; color: var(--chrome-text); padding: 5px 0; }
+  .f06-spon {
+    flex-direction: column; align-items: flex-start;
+    gap: 20px; height: auto; padding: 24px 16px;
+  }
+  .f06-spongrp { flex-direction: column; align-items: flex-start; gap: 12px; width: 100%; }
+  .f06-sponlogos { flex-wrap: wrap; gap: 20px; }
+  .f06-brandrow { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px 16px 20px 16px; }
+  .f06-social { flex-wrap: wrap; gap: 16px; }
+  .f06-bar { flex-direction: column; gap: 16px; padding: 20px 16px 28px 16px; }
+  .f06-legal { max-width: none; }
+}
+
+
+/* ============================================================
+   C. The five rails  (phone)
+   ============================================================
+   Latest news, Individual world ranking, Road to the Final, Top
+   moment and Photos are grids of equal cards. Stacked, each one
+   becomes six full-width rows and the section stops being one
+   thing a reader can take in — Top moment alone was 1127px of
+   scroll for six clips.
+
+   Each becomes a rail: the grid turns into a single row that
+   bleeds to both screen edges, the cards keep a readable size,
+   and the scroll snaps card to card so a swipe lands somewhere
+   rather than anywhere. mobile.js puts an el-22 progress bar
+   under each one, because a rail that runs off the edge has to
+   say how far it runs.
+   ============================================================ */
+@media (max-width: 767px) {
+
+  .wt-news-side,
+  .wt-cards,
+  .wt-road,
+  .wt-shorts,
+  .wt-photos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    /* full bleed: the rail reaches both edges of the screen and
+       no further, so the next card shows and the swipe reads */
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 0 16px;
+    width: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .wt-news-side::-webkit-scrollbar,
+  .wt-cards::-webkit-scrollbar,
+  .wt-road::-webkit-scrollbar,
+  .wt-shorts::-webkit-scrollbar,
+  .wt-photos::-webkit-scrollbar { display: none; }
+
+  .wt-news-side > *,
+  .wt-cards > *,
+  .wt-road > *,
+  .wt-shorts > *,
+  .wt-photos > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+
+  /* Card widths. 78% of the column leaves the next card's edge
+     showing, which is what tells a reader the row moves; the
+     portrait clips and the player cards are narrower because
+     their own shape is. */
+  .wt-news-side > * { width: 78%; max-width: 300px; }
+  .wt-cards > * { width: 46%; max-width: 190px; }
+  .wt-road > * { width: 70%; max-width: 260px; }
+  .wt-shorts > * { width: 46%; max-width: 190px; }
+  .wt-photos > * { width: 78%; max-width: 300px; }
+
+  /* the lead story stays a full-width block above its rail */
+  .wt-news { display: flex; flex-direction: column; gap: 20px; }
+
+  /* A grid child that was `width: 100%` inside a track has to
+     stop being that inside a flex row. */
+  .wt-cards .pcard-sh, .wt-cards .pcard,
+  .wt-road > .card { width: 100%; }
+
+  /* ---- the el-22 bar under each rail ----------------------- */
+  .wt-railind {
+    display: flex;
+    width: 100%;
+    margin-top: 14px;
+  }
+  .wt-railind .ind-prog { width: 100%; height: 4px; }
+  .wt-railind .ind-fill { height: 4px; }
+
+  /* Photos already ships an el-22 of its own with prev/next
+     buttons; on a phone the swipe is the control and the rail's
+     own bar is the one that tracks it. */
+  .car-bar { display: none; }
+}
