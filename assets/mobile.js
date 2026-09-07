@@ -222,3 +222,39 @@
     init();
   }
 })();
+
+
+/* ------------------------------------------------------------------
+   24th round — Season journey cells hold 12 characters on a phone.
+   A proportional font cannot be cut by CSS at a character count, so
+   the text is cut here and the original kept on the node. Above the
+   phone breakpoint every cell is put back, which is what makes this
+   safe to run on a resize as well as on load.
+   ------------------------------------------------------------------ */
+(function () {
+  var LIMIT = 12;
+
+  function truncCells() {
+    var phone = window.matchMedia('(max-width: 767px)').matches;
+    var nodes = document.querySelectorAll('.wt-jrn .trow .cell > span, .wt-jrn .trow .cell .lbl');
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (n.dataset.full === undefined) n.dataset.full = n.textContent;
+      var full = n.dataset.full;
+      var want = (phone && full.length > LIMIT) ? full.slice(0, LIMIT).replace(/\s+$/, '') + '\u2026' : full;
+      if (n.textContent !== want) n.textContent = want;
+      if (phone && full !== want) n.title = full;
+      else n.removeAttribute('title');
+    }
+  }
+
+  var t;
+  function onResize() { clearTimeout(t); t = setTimeout(truncCells, 120); }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', truncCells);
+  } else {
+    truncCells();
+  }
+  window.addEventListener('resize', onResize);
+})();

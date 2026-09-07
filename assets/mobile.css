@@ -170,7 +170,18 @@
      the control. */
   .s14 { padding: 0 12px; gap: 8px; }
   .s14-nav { display: none; }
-  .s14-scroll { scrollbar-width: none; }
+  /* overflow-x:auto with overflow-y left at visible makes the second
+     axis auto too, so a diagonal swipe drags the strip up and down
+     inside its own 44px box. The strip is a rail: one axis, and the
+     browser is told so for the touch handler as well as the layout. */
+  .s14-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+    overscroll-behavior-y: none;
+    scrollbar-width: none;
+  }
   .s14-scroll::-webkit-scrollbar { display: none; }
 
   /* ---- the hero band --------------------------------------
@@ -181,16 +192,37 @@
      drawn at the band's full height and there is no room beside
      the lock-up for them on a phone. */
   .hwt-in { padding: 0 16px; }
-  .hwt-lock { flex-direction: column; align-items: center; gap: 10px; }
-  .hwt-logo { width: min(72vw, 280px); }
+  /* The strapline is the measure. It is set on one line and the
+     lock-up above it is stretched to exactly that line's width, so
+     the two read as one block rather than as a logo with a caption
+     under it. `width: 0` keeps the logo out of the column's own
+     intrinsic width — otherwise the 385px artwork would set it —
+     and `min-width: 100%` paints it back at the column's width. */
+  .hwt-lock {
+    flex-direction: column;
+    align-items: stretch;
+    width: max-content;
+    max-width: 100%;
+    gap: 6px;
+  }
+  .hwt-logo { width: 0; min-width: 100%; height: auto; }
   .hwt-s {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0.6px;
-    white-space: normal;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
     text-align: center;
   }
-  .hwt-kv-l, .hwt-kv-r { display: none; }
+  /* The two supplied corner elements are drawn at the band's full
+     192px height. On a phone they come down to a third of it and sit
+     on the floor of the band, below the lock-up's line — present at
+     both edges, and never behind the type. */
+  .hwt-kv-l, .hwt-kv-r { display: block; }
+  .hwt-kv {
+    top: auto;
+    bottom: 0;
+    height: 54px;
+  }
 
   /* ---- S-13 Countdown -------------------------------------- */
   .s13 { flex-direction: column; align-items: flex-start; gap: 16px; height: auto; }
@@ -342,12 +374,15 @@
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 12px;
-    /* full bleed: the rail reaches both edges of the screen and
-       no further, so the next card shows and the swipe reads */
-    margin-left: -16px;
-    margin-right: -16px;
-    padding: 0 16px;
-    width: auto;
+    /* 24th round: the rails sit inside the page's own gutters, so
+       Latest news, Individual world ranking, Road to the Final, Top
+       moment and Photos start and end on the same two lines as Next
+       stop and Overview. The next card still shows — that is the
+       card width's job, not the bleed's. */
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
@@ -387,17 +422,97 @@
   .wt-cards .pcard-sh, .wt-cards .pcard,
   .wt-road > .card { width: 100%; }
 
-  /* ---- the el-22 bar under each rail ----------------------- */
+  /* ---- the el-22 bar under each rail -----------------------
+     24th round: withdrawn. A bar under a rail reads as a scrollbar,
+     not as an indicator, and the card edge showing at the gutter
+     already says the row moves. mobile.js still builds and tracks
+     it, so restoring it is one display value. */
   .wt-railind {
-    display: flex;
+    display: none;
     width: 100%;
     margin-top: 14px;
   }
   .wt-railind .ind-prog { width: 100%; height: 4px; }
   .wt-railind .ind-fill { height: 4px; }
 
+  /* and no native bar on anything that scrolls sideways */
+  .wt-news-side, .wt-cards, .wt-road, .wt-shorts, .wt-photos,
+  .s14-scroll, .wt-tbl, .car, .mscroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .wt-news-side::-webkit-scrollbar, .wt-cards::-webkit-scrollbar,
+  .wt-road::-webkit-scrollbar, .wt-shorts::-webkit-scrollbar,
+  .wt-photos::-webkit-scrollbar, .s14-scroll::-webkit-scrollbar,
+  .wt-tbl::-webkit-scrollbar, .car::-webkit-scrollbar,
+  .mscroll::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
   /* Photos already ships an el-22 of its own with prev/next
      buttons; on a phone the swipe is the control and the rail's
      own bar is the one that tracks it. */
   .car-bar { display: none; }
+}
+
+
+/* ============================================================
+   D. The team page  (phone) — 24th round
+   ============================================================ */
+@media (max-width: 767px) {
+
+  /* ---- F-04's 4px bar -------------------------------------
+     The bar was the one thing on the page still running to both
+     screen edges. It is a rule under a headline, so it starts and
+     stops where the headline does. */
+  .wt-subbar {
+    height: 4px;
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  /* and the headline comes up to meet it — a third of the gap */
+  .wt-subtop > .tpl-sub:first-child { padding-top: 17px; }
+
+  /* ---- R-02 Season journey --------------------------------
+     Six columns of prose will not fit 358px and must not be
+     squeezed into it, so this one table scrolls sideways the way
+     the Nations League's do: the rows are laid out at their own
+     width, the event column is pinned to the left edge, and every
+     cell holds one line that ends in an ellipsis rather than
+     wrapping to two. mobile.js cuts the text itself at 12
+     characters; this is the frame it sits in. */
+  .wt-jrn {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .wt-jrn > .trow, .wt-jrn > .thead {
+    width: max-content;
+    min-width: 100%;
+  }
+  .wt-jrn .cell { padding: 0 10px; }
+  .wt-jrn .c-event {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    flex: 0 0 132px;
+    width: 132px;
+    min-width: 132px;
+    background-color: inherit;
+    box-shadow: 1px 0 0 var(--border-subtle);
+  }
+  .wt-jrn .c-tier  { flex: 0 0 116px; width: 116px; }
+  .wt-jrn .c-dates { flex: 0 0 104px; width: 104px; }
+  .wt-jrn .c-n1    { flex: 0 0 68px;  width: 68px; }
+  .wt-jrn .c-entry { flex: 0 0 132px; width: 132px; }
+  .wt-jrn .cell > span, .wt-jrn .cell .lbl {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wt-jrn .thead .cell .t-caption { white-space: nowrap; }
+  /* el-14 Chip is a cut-corner surface; it may shrink, not wrap */
+  .wt-jrn .chip { min-height: 0; min-width: 0; }
 }

@@ -199,14 +199,15 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
    want two marks fighting in the same corner */
 .wt-cards .pcard-union, .wt-roster .pcard-union { display: none; }
 /* the stat column reads down the top-right corner the key visual
-   leaves free, so each label breaks onto its own second line */
+   leaves free; each label stays on one line (24th round) */
 .wt-cards .pcard-stats, .wt-roster .pcard-stats {
   top: 0; bottom: auto; justify-content: flex-start;
   padding-top: 8%; gap: 14px;
 }
 .wt-cards .pcard-k, .wt-roster .pcard-k {
-  display: flex; flex-direction: column; align-items: flex-end;
-  line-height: 1.2; text-align: right;
+  display: flex; flex-direction: row; align-items: baseline;
+  justify-content: flex-end; gap: 0.32em;
+  line-height: 1.2; text-align: right; white-space: nowrap;
 }
 .pcard-kv.wt-kv img { display: block; width: 100%; height: auto; }
 /* the cut-out portrait, in the box the silhouette used */
@@ -387,3 +388,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .f03-list { height: auto; padding: 0; }
   .f03-i, .f03-search, .f03-season { height: 48px; }
 }
+
+
+/* ---------------------------------------------------------------
+   24th round — the sub-page headline sits closer to its 4px bar.
+   The gap was the main's 28px plus F-04's own 40px first-block
+   padding; both are folded into one third of that on the block
+   itself, so the bar and the name read as one lock-up.
+   --------------------------------------------------------------- */
+.wt-subtop { padding-top: 0; }
+.wt-subtop > .tpl-sub:first-child { padding-top: 23px; }
